@@ -139,12 +139,12 @@ function prepareForMove() {
                 piece.removeClass('piece-o');
                 piece.addClass('piece');
 
-                piece.removeclass('knight_b');
-                piece.removeclass('rook_b');
-                piece.removeclass('bishop_b');
-                piece.removeclass('queen_b');
-                piece.removeclass('king_b');
-                piece.removeclass('pawn_b');
+                piece.removeClass('knight_b');
+                piece.removeClass('rook_b');
+                piece.removeClass('bishop_b');
+                piece.removeClass('queen_b');
+                piece.removeClass('king_b');
+                piece.removeClass('pawn_b');
 
                 if (origin.hasClass('knight_w')) {
                     origin.removeClass('knight_w');
