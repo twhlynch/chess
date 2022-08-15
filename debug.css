@@ -1,76 +1,98 @@
 
 
 /* debug */
-
-.upright::before {
+.en-passant::before, .en-passant-o::before {
     content: "";
     position: fixed;
     border-radius: 50%;
     width: 5px;
     height: 5px;
-    background: #fff;
+    z-index: 10;
+    background: #ffff00;
 }
-.upleft::before {
+.pawn::before {
     content: "";
     position: fixed;
     border-radius: 50%;
     width: 5px;
     height: 5px;
-    background: #fff;
+    z-index: 10;
+    background: #00ff00;
 }
-.downright::before {
+.castle::before {
     content: "";
     position: fixed;
     border-radius: 50%;
     width: 5px;
     height: 5px;
-    background: #fff;
+    z-index: 10;
+    background: #0000ff;
 }
-.downleft::before {
+.check::before {
     content: "";
     position: fixed;
     border-radius: 50%;
     width: 5px;
     height: 5px;
-    background: #fff;
+    z-index: 10;
+    background: #ff0000;
 }
-.up2right::before {
+.castleable::before {
     content: "";
     position: fixed;
     border-radius: 50%;
     width: 5px;
     height: 5px;
-    background: #fff;
+    z-index: 10;
+    background: #ff00ff;
 }
-.up2left::before {
+.disabled::after {
     content: "";
     position: fixed;
-    border-radius: 50%;
-    width: 5px;
-    height: 5px;
-    background: #fff;
+    width: calc(5rem - 10px);
+    height: calc(5rem - 10px);
+    z-index: 9;
+    border: #000000 solid 5px;
 }
-.down2right::before {
-    content: "";
-    position: fixed;
-    border-radius: 50%;
-    width: 5px;
-    height: 5px;
-    background: #fff;
+@media screen and (max-width: 640px){
+    .disabled::after{
+        width: calc(4rem - 8px);
+        height: calc(4rem - 8px);
+        border: #000000 solid 4px;
+    }
 }
-.down2left::before {
-    content: "";
-    position: fixed;
-    border-radius: 50%;
-    width: 5px;
-    height: 5px;
-    background: #fff;
+@media screen and (max-height: 640px){
+    .disabled::after{
+        width: calc(4rem - 8px);
+        height: calc(4rem - 8px);
+        border: #000000 solid 4px;
+    }
 }
-.origin::before {
-    content: "";
-    position: fixed;
-    border-radius: 50%;
-    width: 5px;
-    height: 5px;
-    background: #00f;
+@media screen and (max-width: 512px){
+    .disabled::after{
+        width: calc(3rem - 6px);
+        height: calc(3rem - 6px);
+        border: #000000 solid 3px;
+    }
+}
+@media screen and (max-height: 512px){
+    .disabled::after{
+        width: calc(3rem - 6px);
+        height: calc(3rem - 6px);
+        border: #000000 solid 3px;
+    }
+}
+@media screen and (max-width: 384px){
+    .disabled::after{
+        width: calc(2rem - 4px);
+        height: calc(2rem - 4px);
+        border: #000000 solid 2px;
+    }
+}
+@media screen and (max-height: 384px){
+    .disabled::after{
+        width: calc(2rem - 4px);
+        height: calc(2rem - 4px);
+        border: #000000 solid 2px;
+    }
 }
