@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Lato&family=Merriweather:wght@300&family=Playfair+Display&family=Poppins:wght@600&family=Readex+Pro:wght@600&family=Unica+One&display=swap');
+
 /* --------- base & board ---------- */
 body, html{
     display: grid;
@@ -13,6 +15,51 @@ body, html{
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
+}
+#EndGame{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    place-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0005;
+    max-width: 100vw;
+    max-height: 100vh;
+    z-index: 11;
+}
+#EndGame p{
+    font-size: 3rem;
+    color: #000;
+    z-index: 12;
+    margin: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+#options{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
+    align-content: center;
+}
+#restart, #back{
+    display: flex;
+    background-color: #FFFF00;
+    height: 1rem;
+    width: fit-content;
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    padding-top: .1rem;
+    padding-inline: .2rem;
+    padding-bottom: .6rem;
+    cursor: pointer;
+}
+#restart{
+    margin-left: 1rem;
+}
+#back{
+    margin-right: auto;
 }
 /* ---------- tiles ---------- */
 .tile, .tile-d{

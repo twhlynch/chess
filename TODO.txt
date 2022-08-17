@@ -1,0 +1,167 @@
+/*
+if ($('.king_w').hasClass('check-o')) {
+	$('.piece:not(.king_w)').addClass('disable');
+	$('.king_w').click();
+}
+//
+
+$('.check').removeClass('check');//
+
+if ($('.king_b').hasClass('check')) {
+	$('.piece-o:not(.king_b)').addClass('disable');
+	$('.king_b').click();
+}//
+
+$('.check-o').removeClass('check-o');//
+*/
+
+
+
+var checks = [];
+$('.piece').map((p) => {
+	// create .selections
+	$('.selection').map((c) => {
+		checks.push(c);
+	});
+});
+checks.map((c) => {
+	c.addClass('check');
+});
+
+
+var checks = [];
+$('.piece-o').map((p) => {
+	// create .selections
+	$('.selection-o').map((c) => {
+		checks.push(c);
+	});
+});
+checks.map((c) => {
+	c.addClass('check-o');
+});
+
+// king moves
+/*
+if (piece.hasClass('king_w')) {
+	var king1 = getPieceRelative(this, [0, -1]);
+	var king2 = getPieceRelative(this, [1, -1]);
+	var king3 = getPieceRelative(this, [1, 0]);
+	var king4 = getPieceRelative(this, [1, 1]);
+	var king5 = getPieceRelative(this, [0, 1]);
+	var king6 = getPieceRelative(this, [-1, 1]);
+	var king7 = getPieceRelative(this, [-1, 0]);
+	var king8 = getPieceRelative(this, [-1, -1]);
+	var kingMoves = [king1, king2, king3, king4, king5, king6, king7, king8];
+	for (var i = 0; i < kingMoves.length; i++) {
+		if (!kingMoves[i].hasClass('piece') && !kingMoves[i].hasClass('check')) {
+			kingMoves[i].addClass('selected');
+		}
+	}
+	if (piece.hasClass('castle')) {
+		var rook1 = $('[data-row=7][data-col=0]');
+		if (rook1.hasClass('rook_w')) {
+			if (!$('[data-row=7][data-col=1]').hasClass('piece')
+			 && !$('[data-row=7][data-col=2]').hasClass('piece')
+			 && !$('[data-row=7][data-col=1]').hasClass('piece-o')
+			 && !$('[data-row=7][data-col=2]').hasClass('piece-o')
+			 && !$('[data-row=7][data-col=1]').hasClass('check-o')
+			 && !$('[data-row=7][data-col=2]').hasClass('check-o')) {
+				$('[data-row=7][data-col=1]').addClass('selected');
+				$('[data-row=7][data-col=1]').addClass('castleable');
+			}
+		}
+		var rook1 = $('[data-row=7][data-col=7]');
+		if (rook1.hasClass('rook_w')) {
+			if (!$('[data-row=7][data-col=6]').hasClass('piece')
+			 && !$('[data-row=7][data-col=5]').hasClass('piece')
+			 && !$('[data-row=7][data-col=4]').hasClass('piece')
+			 && !$('[data-row=7][data-col=6]').hasClass('piece-o')
+			 && !$('[data-row=7][data-col=5]').hasClass('piece-o')
+			 && !$('[data-row=7][data-col=4]').hasClass('piece-o')
+			 && !$('[data-row=7][data-col=6]').hasClass('check-o')
+			 && !$('[data-row=7][data-col=5]').hasClass('check-o')
+			 && !$('[data-row=7][data-col=4]').hasClass('check-o')) {
+				$('[data-row=7][data-col=5]').addClass('selected');
+				$('[data-row=7][data-col=5]').addClass('castleable');
+			}
+		}
+	}
+	if (!$('.selected')[0]) {
+		if (piece.hasClass('check-o')) {
+			blackWin();
+		} else {
+			gameDraw();
+		}
+	}
+}
+/*
+if (piece.hasClass('king_b')) {
+	var king1 = getPieceRelative(this, [0, -1]);
+	var king2 = getPieceRelative(this, [1, -1]);
+	var king3 = getPieceRelative(this, [1, 0]);
+	var king4 = getPieceRelative(this, [1, 1]);
+	var king5 = getPieceRelative(this, [0, 1]);
+	var king6 = getPieceRelative(this, [-1, 1]);
+	var king7 = getPieceRelative(this, [-1, 0]);
+	var king8 = getPieceRelative(this, [-1, -1]);
+	var kingMoves = [king1, king2, king3, king4, king5, king6, king7, king8];
+	for (var i = 0; i < kingMoves.length; i++) {
+		if (!kingMoves[i].hasClass('piece-o') && !kingMoves[i].hasClass('check-o')) {
+			kingMoves[i].addClass('selected-o');
+		}
+	}
+	if (piece.hasClass('castle')) {
+		var rook1 = $('[data-row=0][data-col=0]');
+		if (rook1.hasClass('rook_b')) {
+			if (!$('[data-row=0][data-col=1]').hasClass('piece')
+			 && !$('[data-row=0][data-col=2]').hasClass('piece')
+			 && !$('[data-row=0][data-col=1]').hasClass('piece-o')
+			 && !$('[data-row=0][data-col=2]').hasClass('piece-o')
+			 && !$('[data-row=0][data-col=1]').hasClass('check')
+			 && !$('[data-row=0][data-col=2]').hasClass('check')) {
+				$('[data-row=0][data-col=1]').addClass('selected-o');
+				$('[data-row=0][data-col=1]').addClass('castleable');
+			}
+		}
+		var rook1 = $('[data-row=0][data-col=7]');
+		if (rook1.hasClass('rook_b')) {
+			if (!$('[data-row=0][data-col=6]').hasClass('piece')
+			 && !$('[data-row=0][data-col=5]').hasClass('piece')
+			 && !$('[data-row=0][data-col=4]').hasClass('piece')
+			 && !$('[data-row=0][data-col=6]').hasClass('piece-o')
+			 && !$('[data-row=0][data-col=5]').hasClass('piece-o')
+			 && !$('[data-row=0][data-col=4]').hasClass('piece-o')
+			 && !$('[data-row=0][data-col=6]').hasClass('check')
+			 && !$('[data-row=0][data-col=5]').hasClass('check')
+			 && !$('[data-row=0][data-col=4]').hasClass('check')) {
+				$('[data-row=0][data-col=5]').addClass('selected-o');
+				$('[data-row=0][data-col=5]').addClass('castleable');
+			}
+		}
+	}
+	if (!$('.selected-o')[0]) {
+		if (piece.hasClass('check')) {
+			whiteWin();
+		} else {
+			gameDraw();
+		}
+	}
+}
+
+/*
+function whiteWin() {
+	$('#EndGame').css("display", "grid");
+	$('#restart, #back').css("display", "flex");
+	$('#EndGame p').text("White Wins");
+}
+function blackWin() {
+	$('#EndGame').css("display", "grid");
+	$('#restart, #back').css("display", "flex");
+	$('#EndGame p').text("Black Wins");
+}
+function gameDraw() {
+	$('#EndGame').css("display", "grid");
+	$('#restart, #back').css("display", "flex");
+	$('#EndGame p').text("Draw");
+}
+/** */

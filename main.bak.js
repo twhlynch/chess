@@ -1,7 +1,5 @@
 /* ---------- setup ---------- */
-var turn;
-function setup() {
-turn = 1;
+var turn = 1;
 // pieces
 $('[data-row=6], [data-row=7]').addClass('piece');
 $('[data-row=0], [data-row=1]').addClass('piece-o');
@@ -45,55 +43,7 @@ $('[data-row=6], [data-row=1]').addClass('pawn');
 $('[data-row=0][data-col=3]').addClass('castle');
 $('[data-row=7][data-col=3]').addClass('castle');
 $('.rook_b, .rook_w').addClass('castle');
-}
-setup();
 /* ---------- functions ---------- */
-
-function whiteWin() {
-	$('#EndGame').css("display", "grid");
-	$('#restart, #back').css("display", "flex");
-	$('#EndGame p').text("White Wins");
-}
-function blackWin() {
-	$('#EndGame').css("display", "grid");
-	$('#restart, #back').css("display", "flex");
-	$('#EndGame p').text("Black Wins");
-}
-function gameDraw() {
-	$('#EndGame').css("display", "grid");
-	$('#restart, #back').css("display", "flex");
-	$('#EndGame p').text("Game Tied");
-}
-
-$('#restart').click(function() {
-	$('#EndGame').css("display", "none");
-	$('#restart, #back').css("display", "none");
-	$('#EndGame p').text("");
-    $('.piece').removeClass('piece');
-    $('.piece-o').removeClass('piece-o');
-    $('.selected').removeClass('selected');
-    $('.selected-o').removeClass('selected-o');
-    $('.pawn').removeClass('pawn');
-    $('.queen_w').removeClass('queen_w');
-    $('.king_w').removeClass('king_w');
-    $('.bishop_w').removeClass('bishop_w');
-    $('.knight_w').removeClass('knight_w');
-    $('.rook_w').removeClass('rook_w');
-    $('.pawn_w').removeClass('pawn_w');
-    $('.disable').removeClass('disable');
-    $('.queen_b').removeClass('queen_b');
-    $('.king_b').removeClass('king_b');
-    $('.bishop_b').removeClass('bishop_b');
-    $('.knight_b').removeClass('knight_b');
-    $('.rook_b').removeClass('rook_b');
-    $('.pawn_b').removeClass('pawn_b');
-    setup();
-    prepareForMove();
-});
-$('#back').click(function() {
-
-});
-
 function debug() {
     $('head').append('<link rel="stylesheet" type="text/css" href="debug.css">');
     var turnCount = turn;
@@ -361,44 +311,24 @@ function prepareForMove() {
                 var king8 = getPieceRelative(this, [-1, -1]);
                 var kingMoves = [king1, king2, king3, king4, king5, king6, king7, king8];
                 for (var i = 0; i < kingMoves.length; i++) {
-                    if (!kingMoves[i].hasClass('piece') && !kingMoves[i].hasClass('check')) {
+                    if (!kingMoves[i].hasClass('piece')) {
                         kingMoves[i].addClass('selected');
                     }
                 }
                 if (piece.hasClass('castle')) {
                     var rook1 = $('[data-row=7][data-col=0]');
                     if (rook1.hasClass('rook_w')) {
-                        if (!$('[data-row=7][data-col=1]').hasClass('piece')
-                         && !$('[data-row=7][data-col=2]').hasClass('piece')
-                         && !$('[data-row=7][data-col=1]').hasClass('piece-o')
-                         && !$('[data-row=7][data-col=2]').hasClass('piece-o')
-                         && !$('[data-row=7][data-col=1]').hasClass('check-o')
-                         && !$('[data-row=7][data-col=2]').hasClass('check-o')) {
+                        if (!$('[data-row=7][data-col=1]').hasClass('piece') && !$('[data-row=7][data-col=2]').hasClass('piece') && !$('[data-row=7][data-col=1]').hasClass('piece-o') && !$('[data-row=7][data-col=2]').hasClass('piece-o')) {
                             $('[data-row=7][data-col=1]').addClass('selected');
                             $('[data-row=7][data-col=1]').addClass('castleable');
                         }
                     }
                     var rook1 = $('[data-row=7][data-col=7]');
                     if (rook1.hasClass('rook_w')) {
-                        if (!$('[data-row=7][data-col=6]').hasClass('piece')
-                         && !$('[data-row=7][data-col=5]').hasClass('piece')
-                         && !$('[data-row=7][data-col=4]').hasClass('piece')
-                         && !$('[data-row=7][data-col=6]').hasClass('piece-o')
-                         && !$('[data-row=7][data-col=5]').hasClass('piece-o')
-                         && !$('[data-row=7][data-col=4]').hasClass('piece-o')
-                         && !$('[data-row=7][data-col=6]').hasClass('check-o')
-                         && !$('[data-row=7][data-col=5]').hasClass('check-o')
-                         && !$('[data-row=7][data-col=4]').hasClass('check-o')) {
+                        if (!$('[data-row=7][data-col=6]').hasClass('piece') && !$('[data-row=7][data-col=5]').hasClass('piece') && !$('[data-row=7][data-col=6]').hasClass('piece-o') && !$('[data-row=7][data-col=5]').hasClass('piece-o') && !$('[data-row=7][data-col=4]').hasClass('piece') && !$('[data-row=7][data-col=4]').hasClass('piece-o')) {
                             $('[data-row=7][data-col=5]').addClass('selected');
                             $('[data-row=7][data-col=5]').addClass('castleable');
                         }
-                    }
-                }
-                if (!$('.selected')[0]) {
-                    if (piece.hasClass('check-o')) {
-                        blackWin();
-                    } else {
-                        gameDraw();
                     }
                 }
             } else if (piece.hasClass('pawn_w')) {
@@ -489,17 +419,6 @@ function prepareForMove() {
                     }
                 }
                 $('.en-passant-o').removeClass('en-passant-o');
-                $('.check-o').removeClass('check-o');
-                var checks = [];
-                $('.piece').map((p) => {
-                    // create .selections
-                    $('.selection').map((c) => {
-                        checks.push(c);
-                    });
-                });
-                checks.map((c) => {
-                    c.addClass('check');
-                });
                 turn += 1;
                 prepareForMove();
             });
@@ -736,44 +655,24 @@ function prepareForMove() {
                 var king8 = getPieceRelative(this, [-1, -1]);
                 var kingMoves = [king1, king2, king3, king4, king5, king6, king7, king8];
                 for (var i = 0; i < kingMoves.length; i++) {
-                    if (!kingMoves[i].hasClass('piece-o') && !kingMoves[i].hasClass('check-o')) {
+                    if (!kingMoves[i].hasClass('piece-o')) {
                         kingMoves[i].addClass('selected-o');
                     }
                 }
                 if (piece.hasClass('castle')) {
                     var rook1 = $('[data-row=0][data-col=0]');
                     if (rook1.hasClass('rook_b')) {
-                        if (!$('[data-row=0][data-col=1]').hasClass('piece')
-                         && !$('[data-row=0][data-col=2]').hasClass('piece')
-                         && !$('[data-row=0][data-col=1]').hasClass('piece-o')
-                         && !$('[data-row=0][data-col=2]').hasClass('piece-o')
-                         && !$('[data-row=0][data-col=1]').hasClass('check')
-                         && !$('[data-row=0][data-col=2]').hasClass('check')) {
+                        if (!$('[data-row=0][data-col=1]').hasClass('piece') && !$('[data-row=0][data-col=2]').hasClass('piece') && !$('[data-row=0][data-col=1]').hasClass('piece-o') && !$('[data-row=0][data-col=2]').hasClass('piece-o')) {
                             $('[data-row=0][data-col=1]').addClass('selected-o');
                             $('[data-row=0][data-col=1]').addClass('castleable');
                         }
                     }
                     var rook1 = $('[data-row=0][data-col=7]');
                     if (rook1.hasClass('rook_b')) {
-                        if (!$('[data-row=0][data-col=6]').hasClass('piece')
-                         && !$('[data-row=0][data-col=5]').hasClass('piece')
-                         && !$('[data-row=0][data-col=4]').hasClass('piece')
-                         && !$('[data-row=0][data-col=6]').hasClass('piece-o')
-                         && !$('[data-row=0][data-col=5]').hasClass('piece-o')
-                         && !$('[data-row=0][data-col=4]').hasClass('piece-o')
-                         && !$('[data-row=0][data-col=6]').hasClass('check')
-                         && !$('[data-row=0][data-col=5]').hasClass('check')
-                         && !$('[data-row=0][data-col=4]').hasClass('check')) {
+                        if (!$('[data-row=0][data-col=6]').hasClass('piece') && !$('[data-row=0][data-col=5]').hasClass('piece') && !$('[data-row=0][data-col=6]').hasClass('piece-o') && !$('[data-row=0][data-col=5]').hasClass('piece-o') && !$('[data-row=0][data-col=4]').hasClass('piece') && !$('[data-row=0][data-col=4]').hasClass('piece-o')) {
                             $('[data-row=0][data-col=5]').addClass('selected-o');
                             $('[data-row=0][data-col=5]').addClass('castleable');
                         }
-                    }
-                }
-                if (!$('.selected-o')[0]) {
-                    if (piece.hasClass('check')) {
-                        whiteWin();
-                    } else {
-                        gameDraw();
                     }
                 }
             } else if (piece.hasClass('pawn_b')) {
@@ -864,31 +763,11 @@ function prepareForMove() {
                     }
                 }
                 $('.en-passant').removeClass('en-passant');
-                $('.check').removeClass('check');
-                var checks = [];
-                $('.piece-o').map((p) => {
-                    // create .selections
-                    $('.selection-o').map((c) => {
-                        checks.push(c);
-                    });
-                });
-                checks.map((c) => {
-                    c.addClass('check-o');
-                });
                 turn += 1;
                 prepareForMove();
             });
         }
     });
-    // check
-    if ($('.king_w').hasClass('check-o')) {
-        $('.piece:not(.king_w)').addClass('disable');
-        $('.king_w').click();
-    }
-    if ($('.king_b').hasClass('check')) {
-        $('.piece-o:not(.king_b)').addClass('disable');
-        $('.king_b').click();
-    }
 }
 
 /* ---------- start ---------- */
