@@ -132,7 +132,7 @@ function prepareForMove() {
 
     $('.piece').click(function() {
         if (turn  % 2 == 1) {
-
+            getChecksO();
             $('.selected').removeClass('selected');
             $('.selected-o').removeClass('selected-o');
 
@@ -490,16 +490,6 @@ function prepareForMove() {
                 }
                 $('.en-passant-o').removeClass('en-passant-o');
                 $('.check-o').removeClass('check-o');
-                var checks = [];
-                $('.piece').map((p) => {
-                    // create .selections
-                    $('.selection').map((c) => {
-                        checks.push(c);
-                    });
-                });
-                checks.map((c) => {
-                    c.addClass('check');
-                });
                 turn += 1;
                 prepareForMove();
             });
@@ -507,7 +497,7 @@ function prepareForMove() {
     });
     $('.piece-o').click(function() {
         if (turn  % 2 == 0) {
-
+            getChecks();
             $('.selected').removeClass('selected');
             $('.selected-o').removeClass('selected-o');
 
@@ -865,16 +855,7 @@ function prepareForMove() {
                 }
                 $('.en-passant').removeClass('en-passant');
                 $('.check').removeClass('check');
-                var checks = [];
-                $('.piece-o').map((p) => {
-                    // create .selections
-                    $('.selection-o').map((c) => {
-                        checks.push(c);
-                    });
-                });
-                checks.map((c) => {
-                    c.addClass('check-o');
-                });
+                
                 turn += 1;
                 prepareForMove();
             });
