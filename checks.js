@@ -1,5 +1,6 @@
 function getChecks() {
-	$('.piece').map((p) => {
+	$('.check').removeClass('check');
+	$.map($('.piece'), (p) => {
 		var piece = $(p);
 		if (piece.hasClass('knight_w')) {
 			var knight1 = getPieceRelative(p, [1, -2]);
@@ -248,7 +249,8 @@ function getChecks() {
 }
 
 function getChecksO() {
-	$('.piece-o').map((p) => {
+	$('.check-o').removeClass('check-o');
+	$.map($('.piece-o'), (p) => {
 		var piece = $(p);
 		if (piece.hasClass('knight_b')) {
 			var knight1 = getPieceRelative(p, [1, -2]);
