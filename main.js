@@ -133,10 +133,16 @@ function prepareForMove() {
     $('.piece').click(function() {
         if (turn  % 2 == 1) {
             getChecksO();
+
+            $('.selected:not(.piece)').off('click');
+            $('.selected-o:not(.piece-o)').off('click');
+
             $('.selected').removeClass('selected');
             $('.selected-o').removeClass('selected-o');
-
+            
             $('.origin').removeClass('origin');
+            //$('.tile:not(.selected, piece)').off('click');
+            //$('.tile-d:not(.selected, piece)').off('click');
 
             var piece = $(this);
             piece.addClass('selected');
@@ -498,11 +504,17 @@ function prepareForMove() {
     $('.piece-o').click(function() {
         if (turn  % 2 == 0) {
             getChecks();
+
+            $('.selected:not(.piece)').off('click');
+            $('.selected-o:not(.piece-o)').off('click');
+
             $('.selected').removeClass('selected');
             $('.selected-o').removeClass('selected-o');
-
+            
             $('.origin').removeClass('origin');
-
+            //$('.tile-d:not(.selected-o, piece-o)').off('click');
+            //$('.tile:not(.selected-o, piece-o)').off('click');
+            
             var piece = $(this);
             piece.addClass('selected-o');
             if (piece.hasClass('knight_b')) {
