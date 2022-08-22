@@ -408,7 +408,9 @@ function prepareForMove() {
                     if (piece.hasClass('check-o')) {
                         blackWin();
                     } else {
-                        gameDraw();
+                        if (!checkStalemate()) {
+                            gameDraw();
+                        }
                     }
                 }
             } else if (piece.hasClass('pawn_w')) {
@@ -796,7 +798,9 @@ function prepareForMove() {
                     if (piece.hasClass('check')) {
                         whiteWin();
                     } else {
-                        gameDraw();
+                        if (!checkStalemateO()) {
+                            gameDraw();
+                        }
                     }
                 }
             } else if (piece.hasClass('pawn_b')) {
