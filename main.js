@@ -80,13 +80,15 @@ $('#restart').click(function() {
     $('.knight_w').removeClass('knight_w');
     $('.rook_w').removeClass('rook_w');
     $('.pawn_w').removeClass('pawn_w');
-    $('.disable').removeClass('disable');
+    $('.disabled').removeClass('disabled');
     $('.queen_b').removeClass('queen_b');
     $('.king_b').removeClass('king_b');
     $('.bishop_b').removeClass('bishop_b');
     $('.knight_b').removeClass('knight_b');
     $('.rook_b').removeClass('rook_b');
     $('.pawn_b').removeClass('pawn_b');
+    $('.check').removeClass('check');
+    $('.check-o').removeClass('check-o');
     setup();
     prepareForMove();
 });
@@ -121,6 +123,8 @@ function getPieceRelative(piece, [col, row]) {
 /* ---------- click events ---------- */
 
 function prepareForMove() {
+    getChecksO();
+    getChecks();
 
     $('.piece, .selected, .piece-o, .selected-o').off('click');
     //$('*').off('click');
@@ -130,8 +134,8 @@ function prepareForMove() {
 
     $('.origin').removeClass('origin');
 
-    $('.piece').click(function() {
-        if (turn  % 2 == 1) {
+    $('.piece:not(.disabled)').click(function() {
+        if (turn  % 2 == 1 && !$(this).hasClass('disabled')) {
             getChecksO();
 
             $('.selected:not(.piece)').off('click');
@@ -367,7 +371,7 @@ function prepareForMove() {
                 var king8 = getPieceRelative(this, [-1, -1]);
                 var kingMoves = [king1, king2, king3, king4, king5, king6, king7, king8];
                 for (var i = 0; i < kingMoves.length; i++) {
-                    if (!kingMoves[i].hasClass('piece') && !kingMoves[i].hasClass('check')) {
+                    if (!kingMoves[i].hasClass('piece') && !kingMoves[i].hasClass('check-o')) {
                         kingMoves[i].addClass('selected');
                     }
                 }
@@ -400,7 +404,7 @@ function prepareForMove() {
                         }
                     }
                 }
-                if (!$('.selected')[0]) {
+                if (!$('.selected:not(.piece)')[0]) {
                     if (piece.hasClass('check-o')) {
                         blackWin();
                     } else {
@@ -496,13 +500,14 @@ function prepareForMove() {
                 }
                 $('.en-passant-o').removeClass('en-passant-o');
                 $('.check-o').removeClass('check-o');
+                $('.disabled').removeClass('disabled');
                 turn += 1;
                 prepareForMove();
             });
         }
     });
-    $('.piece-o').click(function() {
-        if (turn  % 2 == 0) {
+    $('.piece-o:not(.disabled)').click(function() {
+        if (turn  % 2 == 0 && !$(this).hasClass('disabled')) {
             getChecks();
 
             $('.selected:not(.piece)').off('click');
@@ -738,7 +743,7 @@ function prepareForMove() {
                 var king8 = getPieceRelative(this, [-1, -1]);
                 var kingMoves = [king1, king2, king3, king4, king5, king6, king7, king8];
                 for (var i = 0; i < kingMoves.length; i++) {
-                    if (!kingMoves[i].hasClass('piece-o') && !kingMoves[i].hasClass('check-o')) {
+                    if (!kingMoves[i].hasClass('piece-o') && !kingMoves[i].hasClass('check')) {
                         kingMoves[i].addClass('selected-o');
                     }
                 }
@@ -771,7 +776,7 @@ function prepareForMove() {
                         }
                     }
                 }
-                if (!$('.selected-o')[0]) {
+                if (!$('.selected-o:not(.piece-o)')[0]) {
                     if (piece.hasClass('check')) {
                         whiteWin();
                     } else {
@@ -867,7 +872,7 @@ function prepareForMove() {
                 }
                 $('.en-passant').removeClass('en-passant');
                 $('.check').removeClass('check');
-                
+                $('.disabled').removeClass('disabled');
                 turn += 1;
                 prepareForMove();
             });
@@ -875,11 +880,11 @@ function prepareForMove() {
     });
     // check
     if ($('.king_w').hasClass('check-o')) {
-        $('.piece:not(.king_w)').addClass('disable');
+        $('.piece:not(.king_w)').addClass('disabled');
         $('.king_w').click();
     }
     if ($('.king_b').hasClass('check')) {
-        $('.piece-o:not(.king_b)').addClass('disable');
+        $('.piece-o:not(.king_b)').addClass('disabled');
         $('.king_b').click();
     }
 }

@@ -19,9 +19,9 @@ function getChecks() {
 			var run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [0, i])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -32,9 +32,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [0, -i])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -45,9 +45,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [i, 0])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -58,9 +58,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [-i, 0])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -72,9 +72,9 @@ function getChecks() {
 			var run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [i, i])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -85,9 +85,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [i, -i])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -98,9 +98,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [-i, i])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -111,9 +111,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [-i, -i])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -125,9 +125,9 @@ function getChecks() {
 			var run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [0, i])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -138,9 +138,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [0, -i])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -151,9 +151,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [i, 0])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -164,9 +164,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [-i, 0])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -177,9 +177,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [i, i])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -190,9 +190,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [i, -i])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -203,9 +203,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [-i, i])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -216,9 +216,9 @@ function getChecks() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [-i, -i])
-				if (!move.hasClass('piece') && run == true) {
+				if (run == true) {
 					move.addClass('check');
-					if (move.hasClass('piece-o')) {
+					if (move.hasClass('piece-o') || move.hasClass('piece')) {
 						move.addClass('check');
 						run = false;
 					}
@@ -269,9 +269,9 @@ function getChecksO() {
 			var run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [0, i])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -282,9 +282,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [0, -i])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -295,9 +295,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [i, 0])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -308,9 +308,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [-i, 0])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -322,9 +322,9 @@ function getChecksO() {
 			var run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [i, i])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -335,9 +335,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [i, -i])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -348,9 +348,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [-i, i])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -361,9 +361,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [-i, -i])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -375,9 +375,9 @@ function getChecksO() {
 			var run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [0, i])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -388,9 +388,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [0, -i])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -401,9 +401,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [i, 0])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -414,9 +414,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [-i, 0])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -427,9 +427,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [i, i])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -440,9 +440,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [i, -i])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -453,9 +453,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [-i, i])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
@@ -466,9 +466,9 @@ function getChecksO() {
 			run = true;
 			for (i = 1; i <= 7; i++) {
 				var move = getPieceRelative(p, [-i, -i])
-				if (!move.hasClass('piece-o') && run == true) {
+				if (run == true) {
 					move.addClass('check-o');
-					if (move.hasClass('piece')) {
+					if (move.hasClass('piece') || move.hasClass('piece-o')) {
 						move.addClass('check-o');
 						run = false;
 					}
