@@ -486,7 +486,23 @@ function prepareForMove() {
                     origin.removeClass('pawn_w');
                     origin.removeClass('pawn');
                     if (piece.is('[data-row=0]')) {
-                        piece.addClass('queen_w');
+                        $('#promotion').css('display', 'flex');
+                        $('.p-queen_w').click(function() {
+                            piece.addClass('queen_w');
+                            $('#promotion').css('display', 'none');
+                        });
+                        $('.p-bishop_w').click(function() {
+                            piece.addClass('bishop_w');
+                            $('#promotion').css('display', 'none');
+                        });
+                        $('.p-knight_w').click(function() {
+                            piece.addClass('knight_w');
+                            $('#promotion').css('display', 'none');
+                        });
+                        $('.p-rook_w').click(function() {
+                            piece.addClass('rook_w');
+                            $('#promotion').css('display', 'none');
+                        });
                     } else {
                         piece.addClass('pawn_w');
                     }
@@ -858,7 +874,23 @@ function prepareForMove() {
                     origin.removeClass('pawn_b');
                     origin.removeClass('pawn');
                     if (piece.is('[data-row=7]')) {
-                        piece.addClass('queen_b');
+                        $('#promotion-o').css('display', 'flex');
+                        $('.p-queen_b').click(function() {
+                            piece.addClass('queen_b');
+                            $('#promotion-o').css('display', 'none');
+                        });
+                        $('.p-bishop_b').click(function() {
+                            piece.addClass('bishop_b');
+                            $('#promotion-o').css('display', 'none');
+                        });
+                        $('.p-knight_b').click(function() {
+                            piece.addClass('knight_b');
+                            $('#promotion-o').css('display', 'none');
+                        });
+                        $('.p-rook_b').click(function() {
+                            piece.addClass('rook_b');
+                            $('#promotion-o').css('display', 'none');
+                        });
                     } else {
                         piece.addClass('pawn_b');
                     }
