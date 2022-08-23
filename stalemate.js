@@ -1,5 +1,6 @@
 function checkStalemate() {
-    $.map($('piece'), (p) => {
+    var res = false;
+    $.map($('.piece'), (p) => {
         var piece = $(p);
         if (piece.hasClass('knight_w')) {
             var knight1 = getPieceRelative(p, [1, -2]);
@@ -14,7 +15,7 @@ function checkStalemate() {
             for (var i = 0; i < knightMoves.length; i++) {
                 if (!knightMoves[i].hasClass('piece')) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                 }
             }
         } else if (piece.hasClass('rook_w')) {
@@ -23,7 +24,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [0, i])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -36,7 +37,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [0, -i])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -49,7 +50,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [i, 0])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -62,7 +63,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [-i, 0])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -76,7 +77,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [i, i])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -89,7 +90,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [i, -i])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -102,7 +103,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [-i, i])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -115,7 +116,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [-i, -i])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -129,7 +130,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [0, i])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -142,7 +143,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [0, -i])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -155,7 +156,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [i, 0])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -168,7 +169,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [-i, 0])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -181,7 +182,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [i, i])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -194,7 +195,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [i, -i])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -207,7 +208,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [-i, i])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -220,7 +221,7 @@ function checkStalemate() {
                 var move = getPieceRelative(p, [-i, -i])
                 if (!move.hasClass('piece') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece-o')) {
                         run = false;
                     }
@@ -235,11 +236,11 @@ function checkStalemate() {
             var pawnTake2 = getPieceRelative(p, [-1, -1]);
             if (pawnTake1.hasClass('piece-o') || pawnTake1.hasClass('en-passant-o')) {
                 piece.removeClass('disabled');
-                return true;
+                res = true;
             }
             if (pawnTake2.hasClass('piece-o') || pawnTake2.hasClass('en-passant-o')) {
                 piece.removeClass('disabled');
-                return true;
+                res = true;
             }
             if (piece.hasClass('pawn') && !pawn1.hasClass('piece') && !pawn1.hasClass('piece-o')) {
                 var pawnMoves = [pawn1, pawn2];
@@ -249,16 +250,21 @@ function checkStalemate() {
             for (var i = 0; i < pawnMoves.length; i++) {
                 if (!pawnMoves[i].hasClass('piece') && !pawnMoves[i].hasClass('piece-o')) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                 }
             }
         }
     });
-    return false;
+    if (res == true) {
+        return true;
+    } else {
+        return false
+    }
 }
 
 function checkStalemateO() {
-    $.map($('piece-o'), (p) => {
+    var res = false;
+    $.map($('.piece-o'), (p) => {
         var piece = $(p);
         if (piece.hasClass('knight_b')) {
             var knight1 = getPieceRelative(p, [1, -2]);
@@ -273,7 +279,7 @@ function checkStalemateO() {
             for (var i = 0; i < knightMoves.length; i++) {
                 if (!knightMoves[i].hasClass('piece-o')) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                 }
             }
         } else if (piece.hasClass('rook_b')) {
@@ -282,7 +288,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [0, i])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -295,7 +301,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [0, -i])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -308,7 +314,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [i, 0])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -321,7 +327,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [-i, 0])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -335,7 +341,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [i, i])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -348,7 +354,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [i, -i])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -361,7 +367,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [-i, i])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -374,7 +380,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [-i, -i])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -388,7 +394,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [0, i])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -401,7 +407,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [0, -i])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -414,7 +420,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [i, 0])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -427,7 +433,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [-i, 0])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -440,7 +446,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [i, i])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -453,7 +459,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [i, -i])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -466,7 +472,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [-i, i])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -479,7 +485,7 @@ function checkStalemateO() {
                 var move = getPieceRelative(p, [-i, -i])
                 if (!move.hasClass('piece-o') && run == true) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                     if (move.hasClass('piece')) {
                         run = false;
                     }
@@ -494,11 +500,11 @@ function checkStalemateO() {
             var pawnTake2 = getPieceRelative(p, [-1, 1]);
             if (pawnTake1.hasClass('piece') || pawnTake1.hasClass('en-passant')) {
                 piece.removeClass('disabled');
-                return true;
+                res = true;
             }
             if (pawnTake2.hasClass('piece') || pawnTake2.hasClass('en-passant')) {
                 piece.removeClass('disabled');
-                return true;
+                res = true;
             }
             if (piece.hasClass('pawn') && !pawn1.hasClass('piece') && !pawn1.hasClass('piece-o')) {
                 var pawnMoves = [pawn1, pawn2];
@@ -508,10 +514,14 @@ function checkStalemateO() {
             for (var i = 0; i < pawnMoves.length; i++) {
                 if (!pawnMoves[i].hasClass('piece-o') && !pawnMoves[i].hasClass('piece')) {
                     piece.removeClass('disabled');
-                    return true;
+                    res = true;
                 }
             }
         }
     });
-    return false;
+    if (res == true) {
+        return true;
+    } else {
+        return false
+    }
 }
