@@ -80,8 +80,11 @@ body, html{
     opacity: .9;
 }
 /* ---------- selections ---------- */
-.selected:not(.piece), .selected-o:not(.piece-o){
+.tile.selected:not(.piece), .tile.selected-o:not(.piece-o){
     background-color: #E4A610;
+}
+.tile-d.selected:not(.piece), .tile-d.selected-o:not(.piece-o){
+    background-color: #d2970d;
 }
 /* ---------- pieces ---------- */
 .piece, .piece-o {
