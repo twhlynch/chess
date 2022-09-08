@@ -439,7 +439,88 @@ function prepareForMove() {
             $('.selected:not(.piece)').click(function() {
                 var piece = $(this);
                 var origin = $('.selected.piece');
-                movePiece(origin, getPieceLocation(this), this);
+                origin.addClass('origin');
+
+                origin.removeClass('piece');
+                piece.removeClass('piece-o');
+                piece.addClass('piece');
+
+                piece.removeClass('knight_b');
+                piece.removeClass('rook_b');
+                piece.removeClass('bishop_b');
+                piece.removeClass('queen_b');
+                piece.removeClass('king_b');
+                piece.removeClass('pawn_b');
+
+                if (origin.hasClass('knight_w')) {
+                    origin.removeClass('knight_w');
+                    piece.addClass('knight_w');
+                } else if (origin.hasClass('rook_w')) {
+                    origin.removeClass('castle');
+                    origin.removeClass('rook_w');
+                    piece.addClass('rook_w');
+                } else if (origin.hasClass('bishop_w')) {
+                    origin.removeClass('bishop_w');
+                    piece.addClass('bishop_w');
+                } else if (origin.hasClass('queen_w')) {
+                    origin.removeClass('queen_w');
+                    piece.addClass('queen_w');
+                } else if (origin.hasClass('king_w')) {
+                    if (piece.hasClass('castleable')) {
+                        if (piece.is('[data-row=7][data-col=1]')) {
+                            var rook = $('[data-row=7][data-col=0]');
+                            var castle = $('[data-row=7][data-col=2]');
+                        } else if (piece.is('[data-row=7][data-col=5]')) {
+                            var rook = $('[data-row=7][data-col=7]');
+                            var castle = $('[data-row=7][data-col=4]');
+                        }
+                        rook.removeClass('rook_w');
+                        rook.removeClass('piece');
+                        rook.removeClass('castle');
+                        castle.addClass('rook_w');
+                        castle.addClass('piece');
+                        piece.removeClass('castleable');
+                    }
+                    origin.removeClass('castle');
+                    origin.removeClass('king_w');
+                    piece.addClass('king_w');
+                } else if (origin.hasClass('pawn_w')) {
+                    origin.removeClass('pawn_w');
+                    origin.removeClass('pawn');
+                    if (piece.is('[data-row=0]')) {
+                        $('#promotion').css('display', 'flex');
+                        $('.p-queen_w').click(function() {
+                            piece.addClass('queen_w');
+                            $('#promotion').css('display', 'none');
+                        });
+                        $('.p-bishop_w').click(function() {
+                            piece.addClass('bishop_w');
+                            $('#promotion').css('display', 'none');
+                        });
+                        $('.p-knight_w').click(function() {
+                            piece.addClass('knight_w');
+                            $('#promotion').css('display', 'none');
+                        });
+                        $('.p-rook_w').click(function() {
+                            piece.addClass('rook_w');
+                            $('#promotion').css('display', 'none');
+                        });
+                    } else {
+                        piece.addClass('pawn_w');
+                    }
+                    if (piece.is('[data-row=4]') && origin.is('[data-row=6]')) {
+                        getPieceRelative(this, [0, 1]).addClass('en-passant');
+                    }
+                    if (piece.hasClass('en-passant-o')) {
+                        getPieceRelative(this, [0, 1]).removeClass('piece-o');
+                        getPieceRelative(this, [0, 1]).removeClass('pawn_b');
+                    }
+                }
+                $('.en-passant-o').removeClass('en-passant-o');
+                $('.check-o').removeClass('check-o');
+                $('.disabled').removeClass('disabled');
+                turn += 1;
+                prepareForMove();
             });
         }
     });
@@ -748,7 +829,88 @@ function prepareForMove() {
             $('.selected-o:not(.piece-o)').click(function() {
                 var piece = $(this);
                 var origin = $('.selected-o.piece-o');
-                movePiece(origin, getPieceLocation(this), this);
+                origin.addClass('origin');
+
+                origin.removeClass('piece-o');
+                piece.removeClass('piece');
+                piece.addClass('piece-o');
+
+                piece.removeClass('knight_w');
+                piece.removeClass('rook_w');
+                piece.removeClass('bishop_w');
+                piece.removeClass('queen_w');
+                piece.removeClass('king_w');
+                piece.removeClass('pawn_w');
+
+                if (origin.hasClass('knight_b')) {
+                    origin.removeClass('knight_b');
+                    piece.addClass('knight_b');
+                } else if (origin.hasClass('rook_b')) {
+                    origin.removeClass('castle');
+                    origin.removeClass('rook_b');
+                    piece.addClass('rook_b');
+                } else if (origin.hasClass('bishop_b')) {
+                    origin.removeClass('bishop_b');
+                    piece.addClass('bishop_b');
+                } else if (origin.hasClass('queen_b')) {
+                    origin.removeClass('queen_b');
+                    piece.addClass('queen_b');
+                } else if (origin.hasClass('king_b')) {
+                    if (piece.hasClass('castleable')) {
+                        if (piece.is('[data-row=0][data-col=1]')) {
+                            var rook = $('[data-row=0][data-col=0]');
+                            var castle = $('[data-row=0][data-col=2]');
+                        } else if (piece.is('[data-row=0][data-col=5]')) {
+                            var rook = $('[data-row=0][data-col=7]');
+                            var castle = $('[data-row=0][data-col=4]');
+                        }
+                        rook.removeClass('rook_b');
+                        rook.removeClass('piece-o');
+                        rook.removeClass('castle');
+                        castle.addClass('rook_b');
+                        castle.addClass('piece-o');
+                        piece.removeClass('castleable');
+                    }
+                    origin.removeClass('castle');
+                    origin.removeClass('king_b');
+                    piece.addClass('king_b');
+                } else if (origin.hasClass('pawn_b')) {
+                    origin.removeClass('pawn_b');
+                    origin.removeClass('pawn');
+                    if (piece.is('[data-row=7]')) {
+                        $('#promotion-o').css('display', 'flex');
+                        $('.p-queen_b').click(function() {
+                            piece.addClass('queen_b');
+                            $('#promotion-o').css('display', 'none');
+                        });
+                        $('.p-bishop_b').click(function() {
+                            piece.addClass('bishop_b');
+                            $('#promotion-o').css('display', 'none');
+                        });
+                        $('.p-knight_b').click(function() {
+                            piece.addClass('knight_b');
+                            $('#promotion-o').css('display', 'none');
+                        });
+                        $('.p-rook_b').click(function() {
+                            piece.addClass('rook_b');
+                            $('#promotion-o').css('display', 'none');
+                        });
+                    } else {
+                        piece.addClass('pawn_b');
+                    }
+                    if (piece.is('[data-row=3]') && origin.is('[data-row=1]')) {
+                        getPieceRelative(this, [0, -1]).addClass('en-passant-o');
+                    }
+                    if (piece.hasClass('en-passant')) {
+                        getPieceRelative(this, [0, -1]).removeClass('piece');
+                        getPieceRelative(this, [0, -1]).removeClass('pawn_w');
+                    }
+                }
+                $('.en-passant').removeClass('en-passant');
+                $('.check').removeClass('check');
+                $('.disabled').removeClass('disabled');
+                turn += 1;
+                prepareForMove();
             });
         }
     });
