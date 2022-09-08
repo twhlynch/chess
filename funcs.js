@@ -136,13 +136,11 @@ function movePiece(origin, moveTo, piecethis) {
         origin = backupSelf;
         piece = backupTake;
         turn -= 1;
-        print('no'+turn);
     } else {
         $('.en-passant'+osuffix).removeClass('en-passant'+osuffix);
         $('.check'+osuffix).removeClass('check'+osuffix);
         $('.disabled').removeClass('disabled');
         turn += 1;
-        print('yes'+turn);
         prepareForMove();
     }
 }
