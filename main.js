@@ -5,6 +5,8 @@ turn = 1;
 // pieces
 $('[data-row=6], [data-row=7]').addClass('piece');
 $('[data-row=0], [data-row=1]').addClass('piece-o');
+$('[data-row=6], [data-row=7]').attr('data-team', 'w');
+$('[data-row=0], [data-row=1]').attr('data-team', 'b');
 // black
 $('[data-row=0][data-col=0]').addClass('rook_b');
 $('[data-row=0][data-col=1]').addClass('knight_b');
