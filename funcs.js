@@ -61,6 +61,9 @@ function movePiece(origin, moveTo, piecethis) {
     piece.removeClass('piece'+osuffix);
     piece.addClass('piece'+suffix);
 
+    piece.attr('data-team', team);
+    origin.removeAttr('data-team')
+
     piece.removeClass('knight_'+oteam);
     piece.removeClass('rook_'+oteam);
     piece.removeClass('bishop_'+oteam);
